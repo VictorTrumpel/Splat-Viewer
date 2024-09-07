@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+
+#!/bin/bash
+
+BOLD='\033[1m'
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+NC='\033[0m'
+
+# Регулярное выражение для проверки имени ветки
+branch_regex='^(feat|fix|style|refactor|test)/.*$'
+
+# Получение имени текущей ветки
+current_branch=$(git symbolic-ref --short HEAD)
+
+# Проверка имени ветки
+if ! [[ $current_branch =~ $branch_regex ]]; then
+  echo "${RED}Ошибка: Имя ветки '$current_branch' не соответствует требованиям.${NC}"
+  echo "${BOLD}Имя ветки должно начитнаться с:\n${GREEN}feat/,\nfix/,\nstyle/,\nrefactor/,\ntest/\n${NC}"
+  exit 1
+fi

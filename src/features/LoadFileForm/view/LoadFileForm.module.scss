@@ -1,0 +1,19 @@
+.FileUploader {
+  color: black;
+  border: none;
+}
+
+:global {
+  .splat-uploader-btn {
+    background-color: white;
+  }
+
+  .ant-upload-drag-icon span svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .splat-uploader-list {
+    background-color: white;
+  }
+}

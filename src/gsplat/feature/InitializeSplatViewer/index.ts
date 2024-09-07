@@ -1,0 +1,1 @@
+export { InitializeSplatViewer } from "./InitializeSplatViewer";
