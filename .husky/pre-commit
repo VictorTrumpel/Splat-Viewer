@@ -21,3 +21,6 @@ if ! [[ $current_branch =~ $branch_regex ]]; then
   echo "${BOLD}Имя ветки должно начитнаться с:\n${GREEN}feat/,\nfix/,\nstyle/,\nrefactor/,\ntest/\n${NC}"
   exit 1
 fi
+
+npx run lint
+npx run vitest
