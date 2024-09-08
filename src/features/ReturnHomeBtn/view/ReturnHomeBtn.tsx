@@ -14,7 +14,7 @@ export const ReturnHomeBtn = ({ useViewModel }: ReturnHomeBtnProps) => {
     <BindKeyButton
       onPressed={handleReturnToHomePage}
       className={styles.ReturnHomeBtn}
-      toolTipText="Вернуться на главную"
+      toolTipText="Вернуться на главную >>>>"
     >
       <HomeOutlined />
     </BindKeyButton>
