@@ -61,3 +61,6 @@ npm run prepare
 ```bash
 npm run dev # работает на 3000-м порту
 ```
+
+## Направление зависимостей в проекте
+![Направление зависимостей drawio](https://github.com/user-attachments/assets/ec3e6c15-c870-4ac4-8ccf-708de26db7fe)
