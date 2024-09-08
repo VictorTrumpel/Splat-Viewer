@@ -1,0 +1,43 @@
+# Исключаем файлы и директории, которые не нужны в образе
+
+# Игнорируем директории сборки и зависимости
+node_modules
+dist
+build
+
+# Игнорируем конфиденциальные файлы
+.env
+.env.local
+.env.*.local
+
+# Игнорируем временные файлы и кэш
+*.log
+*.tmp
+*.swp
+*.pid
+*.gz
+
+# Исключаем файлы редакторов и IDE
+.vscode
+.idea
+*.sublime-project
+*.sublime-workspace
+
+# Игнорируем файлы тестов и конфигурации
+test
+tests
+coverage
+__tests__
+__mocks__
+
+# Игнорируем исходные файлы документации
+README.md
+*.md
+
+# Исключаем файлы конфигураций, специфичных для CI/CD и сборки
+Dockerfile.*
+.dockerignore
+.git
+.gitignore
+.gitlab-ci.yml
+.github
