@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { Button, ButtonProps, Tooltip } from "antd";
+import cn from "classnames";
 import styles from "./KeyButton.module.scss";
 
 export type KeyButtonProps = ButtonProps & {
@@ -12,6 +13,7 @@ export const KeyButton = ({
   toolTipText,
   children,
   isPressed,
+  className,
   ...props
 }: KeyButtonProps) => {
   return (
@@ -19,7 +21,7 @@ export const KeyButton = ({
       <Button
         {...props}
         type={isPressed && "primary"}
-        className={styles.KeyButton}
+        className={cn(styles.KeyButton, className)}
       >
         {children}
       </Button>
