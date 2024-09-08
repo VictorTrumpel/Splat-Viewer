@@ -1,17 +1,17 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { defaultStart as defaultInitGSplat } from "@gsplat/config";
 import { App } from "./app/App";
 import { OrbitControls, Scene } from "@gsplat/core";
+import { StoreProvider } from "@app";
 import * as SPLAT from "gsplat";
 import "./index.scss";
 
 defaultInitGSplat();
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
+  <StoreProvider>
     <App />
-  </StrictMode>
+  </StoreProvider>
 );
 
 setTimeout(async () => {
@@ -19,8 +19,8 @@ setTimeout(async () => {
   await SPLAT.Loader.LoadAsync(url, Scene.get(), () => {});
 
   OrbitControls.get().orbitSpeed = 0.4;
-  OrbitControls.get().zoomSpeed = 0.1;
-  OrbitControls.get().panSpeed = 0.1;
+  OrbitControls.get().zoomSpeed = 0.4;
+  OrbitControls.get().panSpeed = 1;
 
   // ZigZag();
   // ZoomZoom();

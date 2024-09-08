@@ -21,6 +21,7 @@ export default defineConfig({
       "@components": path.resolve(__dirname, "./src/components"),
       "@features": path.resolve(__dirname, "./src/features"),
       "@widgets": path.resolve(__dirname, "./src/widgets"),
+      "@app": path.resolve(__dirname, "./src/app"),
       "@gsplat/core": path.resolve(__dirname, "./src/gsplat/core"),
       "@gsplat/feature": path.resolve(__dirname, "./src/gsplat/feature"),
       "@gsplat/config": path.resolve(__dirname, "./src/gsplat/config"),

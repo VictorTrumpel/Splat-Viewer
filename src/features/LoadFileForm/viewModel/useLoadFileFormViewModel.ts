@@ -1,11 +1,15 @@
+import { menuRouterActions } from "@entities";
+import { useAppDispatch } from "@shared";
 import * as GSPlatFeature from "@gsplat/feature";
 
 export type LoadFileFormViewModel = {
   handleValidateFile: (file: File) => { error: null | Error };
-  handleLoadFile: (file: File) => void;
+  handleLoadFile: (file: File) => Promise<void>;
 };
 
 export const useLoadFileFormViewModel = (): LoadFileFormViewModel => {
+  const dispatch = useAppDispatch();
+
   const handleValidateFile = (file: File) => {
     const errorCases = {
       emptyFile: new Error("Файл не может быть пустым"),
@@ -24,6 +28,7 @@ export const useLoadFileFormViewModel = (): LoadFileFormViewModel => {
 
   const handleLoadFile = async (file: File) => {
     await GSPlatFeature.LoadNewModel(file);
+    dispatch(menuRouterActions.setPage("workArea"));
   };
 
   return { handleValidateFile, handleLoadFile };

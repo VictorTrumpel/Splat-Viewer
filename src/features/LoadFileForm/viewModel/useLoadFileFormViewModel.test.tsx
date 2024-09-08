@@ -1,5 +1,9 @@
 import { describe, test, expect, beforeEach, vi } from "vitest";
+import { renderHook } from "@testing-library/react";
+import { createReduxStore } from "@shared";
+import { Provider } from "react-redux";
 import { useLoadFileFormViewModel } from "./useLoadFileFormViewModel";
+
 import * as GSPlatFeature from "@gsplat/feature";
 
 vi.mock("@gsplat/feature", () => {
@@ -13,7 +17,13 @@ describe("Спецификация хука useLoadFileFormViewModel", () => {
     vi.clearAllMocks();
   });
   test("Если в функцию будет передан пустой файл, то вернется ошибка с текстом: Файл не может быть пустым", () => {
-    const { handleValidateFile } = useLoadFileFormViewModel();
+    const store = createReduxStore();
+
+    const { result } = renderHook(() => useLoadFileFormViewModel(), {
+      wrapper: ({ children }) => <Provider store={store}>{children}</Provider>,
+    });
+
+    const { handleValidateFile } = result.current;
 
     const file = new File([new Blob([])], "test.splat", {
       type: "text/plain",
@@ -30,7 +40,13 @@ describe("Спецификация хука useLoadFileFormViewModel", () => {
     Если в функцию handleValidateFile передан файл НЕ с расширением .splat, 
     то возвращается ошибка с текстом: Нужно загрузить файл c расширением .splat
   `, () => {
-    const { handleValidateFile } = useLoadFileFormViewModel();
+    const store = createReduxStore();
+
+    const { result } = renderHook(() => useLoadFileFormViewModel(), {
+      wrapper: ({ children }) => <Provider store={store}>{children}</Provider>,
+    });
+
+    const { handleValidateFile } = result.current;
 
     const imageContent = new Uint8Array([137, 80, 78, 71, 13, 10, 26, 10]);
 
@@ -49,7 +65,13 @@ describe("Спецификация хука useLoadFileFormViewModel", () => {
     expect(isRightMessage).toBeTruthy();
   });
   test("Если передан НЕ пустой файл с расширением .splat, то возвращается { error: null }", () => {
-    const { handleValidateFile } = useLoadFileFormViewModel();
+    const store = createReduxStore();
+
+    const { result } = renderHook(() => useLoadFileFormViewModel(), {
+      wrapper: ({ children }) => <Provider store={store}>{children}</Provider>,
+    });
+
+    const { handleValidateFile } = result.current;
 
     const imageContent = new Uint8Array([137, 80, 78, 71, 13, 10, 26, 10]);
 
@@ -62,7 +84,13 @@ describe("Спецификация хука useLoadFileFormViewModel", () => {
     expect(error).toBe(null);
   });
   test("Метод handleLoadFile вызывает GSPlatFeature.LoadNewModel из модуля @gsplat/feature", () => {
-    const { handleLoadFile } = useLoadFileFormViewModel();
+    const store = createReduxStore();
+
+    const { result } = renderHook(() => useLoadFileFormViewModel(), {
+      wrapper: ({ children }) => <Provider store={store}>{children}</Provider>,
+    });
+
+    const { handleLoadFile } = result.current;
 
     const imageContent = new Uint8Array([137, 80, 78, 71, 13, 10, 26, 10]);
     const file = new File([imageContent], "test.splat", {
@@ -72,5 +100,26 @@ describe("Спецификация хука useLoadFileFormViewModel", () => {
     handleLoadFile(file);
 
     expect(GSPlatFeature.LoadNewModel).toBeCalledTimes(1);
+  });
+
+  test("Метод handleLoadFile меняет в сторе menuRouterActions страницу на workArea", async () => {
+    const store = createReduxStore({
+      menuRouterStore: { menuPage: "startPage" },
+    });
+
+    const { result } = renderHook(() => useLoadFileFormViewModel(), {
+      wrapper: ({ children }) => <Provider store={store}>{children}</Provider>,
+    });
+
+    const { handleLoadFile } = result.current;
+
+    const imageContent = new Uint8Array([137, 80, 78, 71, 13, 10, 26, 10]);
+    const file = new File([imageContent], "test.splat", {
+      type: "text/plain",
+    });
+
+    await handleLoadFile(file);
+
+    expect(store.getState().menuRouterStore.menuPage).toBe("workArea");
   });
 });

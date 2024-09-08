@@ -12,7 +12,7 @@ describe("Спецификация компонента <LoadFileForm />", () =>
 
     const useViewModel = (): LoadFileFormViewModel => ({
       handleValidateFile,
-      handleLoadFile() {},
+      handleLoadFile: () => Promise.resolve(),
     });
 
     render(<LoadFileForm useViewModel={useViewModel} />);
@@ -40,7 +40,7 @@ describe("Спецификация компонента <LoadFileForm />", () =>
 
     const useViewModel = (): LoadFileFormViewModel => ({
       handleValidateFile,
-      handleLoadFile() {},
+      handleLoadFile: () => Promise.resolve(),
     });
 
     render(<LoadFileForm useViewModel={useViewModel} />);
@@ -61,7 +61,7 @@ describe("Спецификация компонента <LoadFileForm />", () =>
 
     const useViewModel = (): LoadFileFormViewModel => ({
       handleValidateFile,
-      handleLoadFile() {},
+      handleLoadFile: () => Promise.resolve(),
     });
 
     render(<LoadFileForm useViewModel={useViewModel} />);
@@ -80,39 +80,5 @@ describe("Спецификация компонента <LoadFileForm />", () =>
     errorMessage = screen.queryByTestId(DataTestIdMap.errorMessage);
 
     expect(errorMessage).toBeNull();
-  });
-  test(`
-    Если функция handleValidateFile не выдала ошибок, то начинается загрузка файла:
-    - инпут загрузки файла скрывается
-    - отображается имя файла
-    - отображается индикатор загрузки в процентах
-  `, async () => {
-    const handleValidateFile = vi.fn(() => ({
-      error: null,
-    }));
-
-    const useViewModel = (): LoadFileFormViewModel => ({
-      handleValidateFile,
-      handleLoadFile() {},
-    });
-
-    render(<LoadFileForm useViewModel={useViewModel} />);
-
-    const errorMessage = screen.queryByTestId(DataTestIdMap.errorMessage);
-
-    expect(errorMessage).toBeNull();
-
-    let inputFile: HTMLElement | null = screen.getByTestId("input-file");
-    const file = new File([], "test.some", { type: "text/plain" });
-
-    await act(async () => {
-      if (inputFile) {
-        await userEvent.upload(inputFile, file);
-      }
-    });
-
-    inputFile = screen.queryByTestId("input-file");
-
-    expect(inputFile).toBeNull();
   });
 });

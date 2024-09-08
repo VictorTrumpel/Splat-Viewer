@@ -14,7 +14,6 @@ export type LoadFileFormProps = {
 
 export const LoadFileForm = ({ useViewModel }: LoadFileFormProps) => {
   const [error, setError] = useState<string | null>(null);
-  const [fileName, setFileName] = useState<string | null>(null);
 
   const { handleValidateFile, handleLoadFile } = useViewModel();
 
@@ -24,28 +23,25 @@ export const LoadFileForm = ({ useViewModel }: LoadFileFormProps) => {
       setError(error.message);
       return;
     }
-    setFileName(file.name);
     await handleLoadFile(file);
   };
 
-  const isFileLoading = fileName !== null;
+  const showErrorMessage = !!error;
 
   return (
     <div className={styles.LoadFileForm}>
-      <Visible show={!isFileLoading}>
-        <Uploader
-          showUploadList={false}
-          prefixCls="splat-uploader"
-          className={styles.FileUploader}
-          multiple={false}
-          beforeUpload={(file) => {
-            handleUpload(file);
-            return false;
-          }}
-        />
-      </Visible>
+      <Uploader
+        showUploadList={false}
+        prefixCls="splat-uploader"
+        className={styles.FileUploader}
+        multiple={false}
+        beforeUpload={(file) => {
+          handleUpload(file);
+          return false;
+        }}
+      />
 
-      <Visible show={!!error}>
+      <Visible show={showErrorMessage}>
         <Text data-testid={DataTestIdMap.errorMessage} type="danger">
           {error}
         </Text>

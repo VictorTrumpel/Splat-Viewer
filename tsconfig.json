@@ -23,6 +23,7 @@
       "@entities": ["./src/entities"],
       "@features": ["./src/features"],
       "@widgets": ["./src/widgets"],
+      "@app": ["./src/app"],
       "@gsplat/core": ["./src/gsplat/core"],
       "@gsplat/feature": ["./src/gsplat/feature"],
       "@gsplat/config": ["./src/gsplat/config"]

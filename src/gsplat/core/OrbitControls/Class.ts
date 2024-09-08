@@ -279,12 +279,12 @@ class OrbitControls {
         desiredTarget = desiredTarget.add(right.multiply(moveSpeed));
 
       // Add rotation with 'e' and 'q' for horizontal rotation
-      if (keys["KeyE"]) desiredAlpha += rotateSpeed;
-      if (keys["KeyQ"]) desiredAlpha -= rotateSpeed;
+      if (keys["KeyE"]) desiredAlpha -= rotateSpeed;
+      if (keys["KeyQ"]) desiredAlpha += rotateSpeed;
 
       // Add rotation with 'r' and 'f' for vertical rotation
-      if (keys["KeyR"]) desiredBeta += rotateSpeed;
-      if (keys["KeyF"]) desiredBeta -= rotateSpeed;
+      if (keys["KeyR"]) desiredBeta -= rotateSpeed;
+      if (keys["KeyF"]) desiredBeta += rotateSpeed;
 
       isUpdatingCamera = false;
     };
