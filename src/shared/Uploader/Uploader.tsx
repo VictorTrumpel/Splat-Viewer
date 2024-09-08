@@ -18,7 +18,12 @@ export const Uploader = ({
   ...props
 }: UploaderProps) => {
   return (
-    <Dragger {...props} prefixCls={prefixCls} data-testid="input-file">
+    <Dragger
+      accept=".splat"
+      {...props}
+      prefixCls={prefixCls}
+      data-testid="input-file"
+    >
       <p className="ant-upload-drag-icon">{icon}</p>
       <p className="ant-upload-text">{actionText}</p>
     </Dragger>

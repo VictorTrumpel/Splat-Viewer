@@ -20,7 +20,7 @@ describe("Спецификация компонента <LoadFileForm />", () =>
     const inputFile = screen.getByTestId("input-file");
 
     const imageContent = new Uint8Array([137, 80, 78, 71, 13, 10, 26, 10]);
-    const file = new File([imageContent], "test.some", {
+    const file = new File([imageContent], "test.splat", {
       type: "text/plain",
     });
 
@@ -46,7 +46,7 @@ describe("Спецификация компонента <LoadFileForm />", () =>
     render(<LoadFileForm useViewModel={useViewModel} />);
 
     const inputFile = screen.getByTestId("input-file");
-    const file = new File([], "test.some", { type: "text/plain" });
+    const file = new File([], "test.splat", { type: "text/plain" });
 
     await act(async () => {
       await userEvent.upload(inputFile, file);

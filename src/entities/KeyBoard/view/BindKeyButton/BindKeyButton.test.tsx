@@ -1,9 +1,8 @@
 import { describe, expect, test, vi } from "vitest";
-import { KeyButtonProps, KeyButto } from "@shared";
+import { KeyButtonProps } from "@shared";
 import { Button } from "antd";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { BindKeyButton } from "./BindKeyButton";
-import userEvent from "@testing-library/user-event";
 import { act } from "react";
 
 vi.mock("@shared", () => {

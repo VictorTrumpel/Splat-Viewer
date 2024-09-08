@@ -1,3 +1,13 @@
 .CameraKeyBoard {
   position: absolute;
+  top: 80vh;
+  left: 5vw;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ButtonRow {
+  display: flex;
+  gap: 16px;
 }

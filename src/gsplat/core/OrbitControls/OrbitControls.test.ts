@@ -10,7 +10,10 @@ interface IMockOrbitControls {
 
 vi.mock("./Class", () => {
   class OrbitControlsMock {
+    keys: { [key: string]: boolean } = {};
+
     constructor(public camera: unknown, public canvas: unknown) {}
+
     update = vi.fn();
   }
   return { OrbitControls: OrbitControlsMock };
@@ -84,5 +87,70 @@ describe("Спецификация модуля OrbitControls", () => {
     const control = OrbitControls.get();
 
     expect(control.update).toBeCalledTimes(1);
+  });
+
+  test('Метод startMovingLeft устанавливает в инстансе контрола keys["KeyA"]=true', () => {
+    OrbitControls.startMovingLeft();
+    expect(OrbitControls.get().keys["KeyA"]).toBeTruthy();
+  });
+  test('Метод stopMovingLeft устанавиливает в инстансе контрола keys["KeyA"]=false', () => {
+    OrbitControls.stopMovingLeft();
+    expect(OrbitControls.get().keys["KeyA"]).toBeFalsy();
+  });
+  test('Метод startMovingForward устанавливает в инстансе контрола keys["KeyW"]=true', () => {
+    OrbitControls.startMovingForward();
+    expect(OrbitControls.get().keys["KeyW"]).toBeTruthy();
+  });
+  test('Метод stopMovingForward устанавливает в инстансе контрола keys["KeyW"]=false', () => {
+    OrbitControls.stopMovingForward();
+    expect(OrbitControls.get().keys["KeyW"]).toBeFalsy();
+  });
+  test('Метод startMovingBack устанавливает в инстансе контрола keys["KeyS"]=true', () => {
+    OrbitControls.startMovingBack();
+    expect(OrbitControls.get().keys["KeyS"]).toBeTruthy();
+  });
+  test('Метод stopMovingBack устанавливает в инстансе контрола keys["KeyS"]=false', () => {
+    OrbitControls.stopMovingBack();
+    expect(OrbitControls.get().keys["KeyS"]).toBeFalsy();
+  });
+  test('Метод startMovingRight устанавливает в инстансе контрола keys["KeyD"]=true', () => {
+    OrbitControls.startMovingRight();
+    expect(OrbitControls.get().keys["KeyD"]).toBeTruthy();
+  });
+  test('Метод stopMovingRight устанавливает в инстансе контрола keys["KeyD"]=false', () => {
+    OrbitControls.stopMovingRight();
+    expect(OrbitControls.get().keys["KeyD"]).toBeFalsy();
+  });
+  test('Метод startRotateLeft устанавливает в инстансе контрола keys["KeyQ"]=true', () => {
+    OrbitControls.startRotateLeft();
+    expect(OrbitControls.get().keys["KeyQ"]).toBeTruthy();
+  });
+  test('Метод stopRotateLeft устанавливает в инстансе контрола keys["KeyQ"]=false', () => {
+    OrbitControls.stopRotateLeft();
+    expect(OrbitControls.get().keys["KeyQ"]).toBeFalsy();
+  });
+  test('Метод startRotateRight устанавливает в инстансе контрола keys["KeyE"]=true', () => {
+    OrbitControls.startRotateRight();
+    expect(OrbitControls.get().keys["KeyE"]).toBeTruthy();
+  });
+  test('Метод stopRotateRight устанавливает в инстансе контрола keys["KeyE"]=false', () => {
+    OrbitControls.stopRotateRight();
+    expect(OrbitControls.get().keys["KeyE"]).toBeFalsy();
+  });
+  test('Метод startRotateTop устанавливает в инстансе контрола keys["KeyR"]=true', () => {
+    OrbitControls.startRotateTop();
+    expect(OrbitControls.get().keys["KeyR"]).toBeTruthy();
+  });
+  test('Метод stopRotateTop устанавливает в инстансе контрола keys["KeyR"]=false', () => {
+    OrbitControls.stopRotateTop();
+    expect(OrbitControls.get().keys["KeyR"]).toBeFalsy();
+  });
+  test('Метод startRotateBottom устанавливает в инстансе контрола keys["KeyF"]=true', () => {
+    OrbitControls.startRotateBottom();
+    expect(OrbitControls.get().keys["KeyF"]).toBeTruthy();
+  });
+  test('Метод stopRotateBottom устанавливает в инстансе контрола keys["KeyF"]=false', () => {
+    OrbitControls.stopRotateBottom();
+    expect(OrbitControls.get().keys["KeyF"]).toBeFalsy();
   });
 });
