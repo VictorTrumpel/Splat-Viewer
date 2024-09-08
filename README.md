@@ -64,3 +64,7 @@ npm run dev # работает на 3000-м порту
 
 ## Направление зависимостей в проекте
 ![Направление зависимостей drawio](https://github.com/user-attachments/assets/ec3e6c15-c870-4ac4-8ccf-708de26db7fe)
+
+## MVVM в разрезе файловой структуры от FSD
+![Файловая структура](https://github.com/user-attachments/assets/01d8e1b2-98cc-40b0-982c-6d7c350cdb6a)
+
