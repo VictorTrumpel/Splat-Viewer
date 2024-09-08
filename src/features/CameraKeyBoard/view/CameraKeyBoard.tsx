@@ -1,7 +1,5 @@
-import { Button, Tooltip } from "antd";
 import { CameraKeyBoardViewModel } from "../viewModel";
 import { BindKeyButton } from "@entities";
-import { KeyButton } from "@shared";
 import {
   ArrowUpOutlined,
   ArrowLeftOutlined,
