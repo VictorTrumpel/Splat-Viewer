@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { LoadFileFormViewModel } from "../viewModel";
 import { Uploader, Visible } from "@shared";
+import { FileOutlined } from "@ant-design/icons";
 import { RcFile } from "antd/es/upload";
 import { Typography } from "antd";
 import { DataTestIdMap } from "./test/DataTestIdMap";
@@ -31,7 +32,14 @@ export const LoadFileForm = ({ useViewModel }: LoadFileFormProps) => {
   return (
     <div className={styles.LoadFileForm}>
       <Uploader
+        actionText="Кликните или перетащите файл в эту область!"
         showUploadList={false}
+        icon={
+          <>
+            <FileOutlined />
+            <span className={styles.FileExtendsHint}>.splat</span>
+          </>
+        }
         prefixCls="splat-uploader"
         className={styles.FileUploader}
         multiple={false}

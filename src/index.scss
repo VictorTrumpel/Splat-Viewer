@@ -1,14 +1,18 @@
+@font-face {
+  font-family: "SonicLogoBold";
+  src: url("./shared/fonts/SonicLogoBold.otf") format("truetype");
+  font-weight: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "SonicLogoBold", sans-serif;
 }
 
 body {
   height: 100vh;
   width: 100vw;
-}
-
-#root {
   position: relative;
 }
