@@ -1,3 +1,8 @@
+.LoadFileForm {
+  margin-right: 10vw;
+  margin-left: auto;
+}
+
 .FileUploader {
   color: black;
   border: none;
@@ -6,6 +11,11 @@
 :global {
   .splat-uploader-btn {
     background-color: white;
+  }
+
+  .splat-uploader-drag.splat-uploader-drag {
+    height: 600px;
+    width: 400px;
   }
 
   .ant-upload-drag-icon span svg {

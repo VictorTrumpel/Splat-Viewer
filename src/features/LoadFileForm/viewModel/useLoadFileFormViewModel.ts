@@ -27,6 +27,8 @@ export const useLoadFileFormViewModel = (): LoadFileFormViewModel => {
   };
 
   const handleLoadFile = async (file: File) => {
+    GSPlatFeature.StartScene.clearScene();
+    GSPlatFeature.MainScene.initScene();
     await GSPlatFeature.LoadNewModel(file);
     dispatch(menuRouterActions.setPage("workArea"));
   };

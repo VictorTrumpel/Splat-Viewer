@@ -10,8 +10,9 @@ export const useReturnHomeBtnViewModel = (): ReturnHomeBtnViewModel => {
   const dispatch = useAppDispatch();
 
   const handleReturnToHomePage = async () => {
+    GSPlatFeature.MainScene.clearScene();
     dispatch(menuRouterActions.setPage("startPage"));
-    await GSPlatFeature.LoadDefaultModel();
+    await GSPlatFeature.StartScene.initScene();
   };
 
   return { handleReturnToHomePage };

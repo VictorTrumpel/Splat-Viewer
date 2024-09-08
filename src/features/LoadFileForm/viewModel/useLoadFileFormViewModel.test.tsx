@@ -9,6 +9,12 @@ import * as GSPlatFeature from "@gsplat/feature";
 vi.mock("@gsplat/feature", () => {
   return {
     LoadNewModel: vi.fn(),
+    StartScene: {
+      clearScene: vi.fn(),
+    },
+    MainScene: {
+      initScene: vi.fn(),
+    },
   };
 });
 
@@ -83,7 +89,7 @@ describe("Спецификация хука useLoadFileFormViewModel", () => {
 
     expect(error).toBe(null);
   });
-  test("Метод handleLoadFile вызывает GSPlatFeature.LoadNewModel из модуля @gsplat/feature", () => {
+  test("Метод handleLoadFile вызывает clearScene фичи StartScene из модуля @gsplat/feature", () => {
     const store = createReduxStore();
 
     const { result } = renderHook(() => useLoadFileFormViewModel(), {
@@ -99,7 +105,25 @@ describe("Спецификация хука useLoadFileFormViewModel", () => {
 
     handleLoadFile(file);
 
-    expect(GSPlatFeature.LoadNewModel).toBeCalledTimes(1);
+    expect(GSPlatFeature.StartScene.clearScene).toBeCalledTimes(1);
+  });
+  test("Метод handleLoadFile вызывает initScene фичи MainScene из модуля @gsplat/feature", () => {
+    const store = createReduxStore();
+
+    const { result } = renderHook(() => useLoadFileFormViewModel(), {
+      wrapper: ({ children }) => <Provider store={store}>{children}</Provider>,
+    });
+
+    const { handleLoadFile } = result.current;
+
+    const imageContent = new Uint8Array([137, 80, 78, 71, 13, 10, 26, 10]);
+    const file = new File([imageContent], "test.splat", {
+      type: "text/plain",
+    });
+
+    handleLoadFile(file);
+
+    expect(GSPlatFeature.MainScene.initScene).toBeCalledTimes(1);
   });
 
   test("Метод handleLoadFile меняет в сторе menuRouterActions страницу на workArea", async () => {

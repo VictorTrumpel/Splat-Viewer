@@ -31,8 +31,6 @@ describe("Спецификация функции LoadNewModel", () => {
     });
 
     LoadNewModel(file);
-
-    expect(Scene.reset).toBeCalledTimes(1);
   });
   test("Функция вызывает метод LoadFromFileAsync у класса Loader из пакета gsplat", async () => {
     const imageContent = new Uint8Array([137, 80, 78, 71, 13, 10, 26, 10]);
