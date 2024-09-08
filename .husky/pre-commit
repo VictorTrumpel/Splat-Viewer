@@ -22,5 +22,5 @@ if ! [[ $current_branch =~ $branch_regex ]]; then
   exit 1
 fi
 
-npx run lint
-npx run vitest
+npm run lint
+npm run test
