@@ -1,5 +1,7 @@
 # SPLAT-VIEWER
 
+## DEMO: https://splat-viewer.vercel.app/
+
 ## Сброка через Docker
 
 1. Убедитесь, что на вашей машине установлен и работает докер-клиент
