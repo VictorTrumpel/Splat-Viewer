@@ -64,6 +64,18 @@ npm run prepare
 npm run dev # работает на 3000-м порту
 ```
 
+4. Запуск тестов
+
+```bash
+npm run test
+```
+
+5. Запуск ESLint
+
+```bash
+npm run lint
+```
+
 ## Направление зависимостей в проекте
 ![Направление зависимостей drawio](https://github.com/user-attachments/assets/ec3e6c15-c870-4ac4-8ccf-708de26db7fe)
 
