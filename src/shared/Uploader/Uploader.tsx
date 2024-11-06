@@ -19,7 +19,7 @@ export const Uploader = ({
 }: UploaderProps) => {
   return (
     <Dragger
-      accept=".splat"
+      accept=".splat,.ply"
       {...props}
       prefixCls={prefixCls}
       data-testid="input-file"
