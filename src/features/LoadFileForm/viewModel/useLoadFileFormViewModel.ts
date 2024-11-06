@@ -17,7 +17,7 @@ export const useLoadFileFormViewModel = (): LoadFileFormViewModel => {
     };
 
     const isEmptyFile = file.size === 0;
-    const isWrongExtension = !file.name.endsWith(".splat");
+    const isWrongExtension = !(file.name.endsWith(".splat") || file.name.endsWith(".ply"));
 
     if (isEmptyFile) return { error: errorCases.emptyFile };
 
